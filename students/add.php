@@ -1,3 +1,10 @@
+<?php
+
+    if (file_exists('../includes/header.php'))
+        require ('../includes/header.php')
+
+?>
+
 <!-- Add Student Page -->
 <!--#include file="header.html"-->
 <div class="row justify-content-center">
@@ -50,3 +57,9 @@
   </div>
 </div>
 <!--#include file="footer.html"-->
+<?php
+
+    if (file_exists('../includes/footer.php'))
+        require('../includes/footer.php');
+
+?>

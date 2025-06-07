@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EduEase - Login</title>
+  <title>SMC - Login</title>
   <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
@@ -12,7 +12,8 @@
     <div class="col-md-5 col-lg-4">
       <div class="card shadow-lg border-0 rounded-4">
         <div class="card-body p-4">
-          <h2 class="fw-bold text-center mb-4 text-primary">EduEase</h2>
+          <h2 class="fw-bold text-center text-primary">SMC</h2>
+          <h6 class="text-center mb-4">Login</h6>
           <form>
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="username" placeholder="Username">

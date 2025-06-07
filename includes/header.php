@@ -1,3 +1,9 @@
+<?php
+
+    $base_url = 'http://localhost/sms/';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,16 +16,16 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="dashboard.html">EduEase</a>
+    <a class="navbar-brand fw-bold" href="<?php echo $base_url; ?>dashboard.php">SMS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" href="students-list.html">Students</a></li>
-        <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">Logout</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>dashboard.php">Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>students/list.php">Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>students/view.php">Profile</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?php echo $base_url; ?>index.php">Logout</a></li>
       </ul>
     </div>
   </div>

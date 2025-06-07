@@ -1,8 +1,15 @@
+<?php
+
+    if (file_exists('../includes/header.php'))
+        require('../includes/header.php')
+
+?>
+
 <!-- Students List Page -->
 <!--#include file="header.html"-->
 <div class="d-flex justify-content-between align-items-center mb-3">
   <h4 class="fw-bold">Student List</h4>
-  <a href="students-add.html" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Student</a>
+  <a href="<?php echo $base_url; ?>students/add.php" class="btn btn-primary"><i class="bi bi-plus-circle"></i> Add Student</a>
 </div>
 <form class="mb-3">
   <div class="input-group">
@@ -28,8 +35,8 @@
         <td>john@example.com</td>
         <td>10</td>
         <td>
-          <a href="students-view.html" class="btn btn-sm btn-outline-info" title="View"><i class="bi bi-eye"></i></a>
-          <a href="students-edit.html" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="bi bi-pencil"></i></a>
+          <a href="<?php echo $base_url; ?>students/view.php" class="btn btn-sm btn-outline-info" title="View"><i class="bi bi-eye"></i></a>
+          <a href="<?php echo $base_url; ?>students/edit.php" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="bi bi-pencil"></i></a>
           <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
         </td>
       </tr>
@@ -39,8 +46,8 @@
         <td>jane@example.com</td>
         <td>11</td>
         <td>
-          <a href="students-view.html" class="btn btn-sm btn-outline-info" title="View"><i class="bi bi-eye"></i></a>
-          <a href="students-edit.html" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="bi bi-pencil"></i></a>
+          <a href="<?php echo $base_url; ?>students/view.php" class="btn btn-sm btn-outline-info" title="View"><i class="bi bi-eye"></i></a>
+          <a href="<?php echo $base_url; ?>students/edit.php" class="btn btn-sm btn-outline-secondary" title="Edit"><i class="bi bi-pencil"></i></a>
           <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
         </td>
       </tr>
@@ -58,3 +65,9 @@
   </ul>
 </nav>
 <!--#include file="footer.html"-->
+<?php
+
+    if (file_exists('../includes/footer.php'))
+        require('../includes/footer.php');
+
+?>

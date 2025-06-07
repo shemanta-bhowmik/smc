@@ -1,3 +1,10 @@
+<?php
+
+    if (file_exists('includes/header.php'))
+        require('includes/header.php');
+
+?>
+
 <!-- Dashboard Page -->
 <!--#include file="header.html"-->
 <div class="row mb-4">
@@ -71,3 +78,10 @@
   </div>
 </div>
 <!--#include file="footer.html"-->
+
+<?php
+
+    if (file_exists('includes/footer.php'))
+        require('includes/footer.php');
+
+?>
