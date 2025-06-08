@@ -1,7 +1,12 @@
 <?php
 
+    // include: header.php
     if (file_exists('includes/header.php'))
         require('includes/header.php');
+
+    // include: database
+    if (file_exists('includes/config.php'))
+        require('includes/config.php');
 
 ?>
 

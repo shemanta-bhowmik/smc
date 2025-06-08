@@ -1,3 +1,11 @@
+<?php
+
+    if (file_exists('create_tables.php')) {
+        require('create_tables.php');
+    }
+
+?>
+
 <!-- Landing/Login Page -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +36,14 @@
               <label class="form-check-label" for="remember">Remember me</label>
             </div>
             <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
+            <?php
+            
+                // display message
+                foreach($messages as $message) {
+                    echo $message;
+                }
+                        
+            ?>
           </form>
         </div>
       </div>
