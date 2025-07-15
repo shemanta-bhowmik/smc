@@ -13,7 +13,19 @@ CREATE TABLE students (
     phone VARCHAR(20),
     dob DATE,
     gender VARCHAR(20),
+    role VARCHAR(20);
     class VARCHAR(50),
     photo VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE faculties (
+    id INT PRIMARY KEY;
+    name VARCHAR(50) NOT NULL;
+    email VARCHAR(50) NOT NULL;
+    dob DATE;
+    gender VARCHAR(20);
+    class VARCHAR(50);
+    photo VARCHAR(255);
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 )

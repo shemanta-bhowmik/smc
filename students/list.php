@@ -1,7 +1,7 @@
 <?php
 
-    if (file_exists('../includes/header.php'))
-        require('../includes/header.php')
+    if (file_exists('../includes/header-dashboard.php'))
+        require('../includes/header-dashboard.php')
 
 ?>
 

@@ -8,12 +8,12 @@
     // empty array
     $messages = [];
 
-    // ---- users table ----
+    // users table
     $users_table = $conn->query("SHOW TABLES LIKE 'users'");
     if ($users_table->num_rows == 0) {
         // SQL to create 'users' table
         $sql_users = "CREATE TABLE users (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             username VARCHAR(50) NOT NULL UNIQUE,
             password VARCHAR(255) NOT NULL,
             role VARCHAR(20) DEFAULT 'admin',
@@ -26,12 +26,12 @@
         }
     }
 
-    // ---- students table ----
+    // students table
     $students_table = $conn->query("SHOW TABLES LIKE 'students'");
     if ($students_table->num_rows == 0) {
         // SQL to create 'students' table
         $sql_students = "CREATE TABLE students (
-            id INT PRIMARY KEY,
+            id INT PRIMARY KEY AUTO_INCREMENT,
             name VARCHAR(50) NOT NULL,
             email VARCHAR(50) NOT NULL UNIQUE,
             phone VARCHAR(20),
@@ -43,6 +43,30 @@
         )";
         if ($conn->query($sql_students) === TRUE) {
             $messages[] = '<p class="alert alert-success">Student table created successfully!</p>';
+        } else {
+            $messages[] = '<p class="alert alert-danger">Error stublishing '/users/' table</p>' . $conn->error . '<br>';
+        }
+    }
+
+    // faculties table
+    $faculties_table = $conn->query("SHOW TABLES LIKE 'faculties'");
+    if ($faculties_table->num_rows == 0) {
+        // SQl to create 'faculties' table
+        $sql_faculties = "CREATE TABLE faculties(
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            name VARCHAR(50) NOT NULL,
+            email VARCHAR(50) NOT NULL UNIQUE,
+            phone VARCHAR(20),
+            dob DATE,
+            gender VARCHAR(20) NOT NULL,
+            password VARCHAR(255) NOT NULL;
+            role VARCHAR(20),
+            class VARCHAR(50),
+            photo VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )";
+        if ($conn->query($sql_faculties) === TRUE) {
+            $messages[] = '<p class="alert alert-success">Faculties table created successfully!</p>';
         } else {
             $messages[] = '<p class="alert alert-danger">Error stublishing '/users/' table</p>' . $conn->error . '<br>';
         }
