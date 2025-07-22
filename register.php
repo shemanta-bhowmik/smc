@@ -83,8 +83,8 @@
             $password_hashed = password_hash($password, PASSWORD_DEFAULT);
             // parepare databasee
             $sql = $conn->prepare("INSERT INTO students (name, email, phone, dob, gender, role, class,  photo, created_at, password)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(),  ?)");
-            $sql->bind_param('sssssssss', $name, $email, $photo, $dob, $gender, $role, $class, $photo, $password_hashed);
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?)");
+            $sql->bind_param('sssssssss', $name, $email, $phone, $dob, $gender, $role, $class, $photo, $password_hashed);
 
             if ($sql->execute()) {
                 $messages[] = '<small class="alert alert-success d-block text-center">Registration Successfully!</small>';

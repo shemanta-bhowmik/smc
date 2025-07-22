@@ -1,3 +1,9 @@
+/* global */
+
+.alert {
+    display: block;
+}
+
 /* registration form */
 .register-form {
     max-width: 420px;

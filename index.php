@@ -7,6 +7,7 @@
 
 	session_start();
 	$errors 	= [];
+	$user_id	= $_POST['id'] ?? '';
 	$email		= $_POST['email'] ?? '';
 	$password	= $_POST['password'] ?? '';
 
@@ -36,14 +37,17 @@
 
 			if ($user = $result->fetch_assoc()) {
 				if (password_verify($password, $user['password'])) {
-					// login successful
+					// creating session
+					$_SESSION['user_id'] = $user_id;
+					$_SESSION['email'] = $email;
+					// redirect to dashboard page
 					header('Location: dashboard.php');
 					exit();
 				} else {
 					$errors['general'] = '<span class="alert alert-danger mb-2 d-block">Invalid password</span>';
 				}
 			} else {
-				$errors['general'] = '<span class="alert alert-danger mb-2 d-block">No user found with that email and role</span>';
+				$errors['general'] = '<span class="alert alert-danger mb-2 d-block">No user found with that email</span>';
 			}
 		}
 	}
@@ -59,7 +63,7 @@
 	<title>SMC - Login</title>
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 	<div class="d-flex align-items-center justify-content-center vh-100">
 		<div class="col-md-5 col-lg-4">
 			<div class="card shadow-lg border-0 rounded-4">

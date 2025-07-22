@@ -1,7 +1,10 @@
 <?php
-
 	// session
 	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header('location: index.php');
+		exit();
+	}
 
 	// include: header.php
 	if (file_exists('includes/header-dashboard.php')) {
@@ -13,14 +16,31 @@
 		require('includes/config.php');
 	}
 
+	// user info
+	$email 		= $_SESSION['email'];
+	$sql 		= $conn->prepare("SELECT name, email FROM students WHERE email=?");
+	$sql->bind_param('s', $email);
+	$sql->execute();
+	$user 		= $sql->get_result()->fetch_assoc();
+	$user_name	= $user['name'] ?? '';
+	$user_email	= $user['email'] ?? '';
+
+	// get total students
+	$total_students = 0;
+	$res			= $conn->query("SELECT COUNT(*) AS total FROM students");
+	if ($row = $res->fetch_assoc()) {
+		$total_students = $row['total'];
+	}
+
 ?>
 
 <!-- Dashboard Page -->
 <!--#include file="header.html"-->
 <div class="row mb-4">
   <div class="col">
-	<h2 class="fw-bold">Welcome, Admin!</h2>
-	<p class="text-muted">Here's an overview of your student database.</p>
+	<h2 class="fw-bold">Welcome to Dashboard</h2>
+	<p class="text-muted mb-0">Name: <?= htmlspecialchars($user_name) ?>!</p>
+	<p class="text-muted">Email: <a href="mailto:<?= htmlspecialchars($user_email) ?>"><?= htmlspecialchars($user_email) ?></a></p>
   </div>
 </div>
 <div class="row g-4 mb-4">
@@ -29,7 +49,7 @@
 	  <div class="card-body text-center">
 		<i class="bi bi-people-fill text-primary mb-2" style="font-size: 2rem"></i>
 		<h5 class="card-title mb-0">Total Students</h5>
-		<h2 class="fw-bold text-primary">245</h2>
+		<h2 class="fw-bold text-primary"><?= $total_students; ?></h2>
 	  </div>
 	</div>
   </div>
@@ -38,7 +58,7 @@
 	  <div class="card-body text-center">
 		<i class="bi bi-person-plus-fill text-success mb-2" style="font-size: 2rem"></i>
 		<h5 class="card-title mb-0">New Admissions</h5>
-		<h2 class="fw-bold text-success">12</h2>
+		<h2 class="fw-bold text-success"><?= $total_students; ?></h2>
 	  </div>
 	</div>
   </div>
@@ -47,7 +67,7 @@
 	  <div class="card-body text-center">
 		<i class="bi bi-calendar-event-fill text-warning mb-2" style="font-size: 2rem"></i>
 		<h5 class="card-title mb-0">Upcoming Events</h5>
-		<h2 class="fw-bold text-warning">3</h2>
+		<h2 class="fw-bold text-warning">0</h2>
 	  </div>
 	</div>
   </div>
@@ -69,16 +89,6 @@
 			<tr>
 			  <td>2025-06-07</td>
 			  <td>Added new student: John Doe</td>
-			  <td>Admin</td>
-			</tr>
-			<tr>
-			  <td>2025-06-05</td>
-			  <td>Edited student: Jane Smith</td>
-			  <td>Admin</td>
-			</tr>
-			<tr>
-			  <td>2025-06-04</td>
-			  <td>Deleted student: Mark Lee</td>
 			  <td>Admin</td>
 			</tr>
 		  </tbody>
